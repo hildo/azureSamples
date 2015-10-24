@@ -1,7 +1,6 @@
 package azure.example.app1.config;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -27,7 +26,6 @@ public class MessageStoreDetails {
     }
     
     public String getUrlString() throws UnsupportedEncodingException {
-        return String.format("amqps://%1s:%2s@%3s?amqp.idleTimeout=3600000",
-                username, URLEncoder.encode(password, "UTF-8"), host);
+        return String.format("amqps://@%3s?amqp.idleTimeout=3600000", host);
     }
 }
