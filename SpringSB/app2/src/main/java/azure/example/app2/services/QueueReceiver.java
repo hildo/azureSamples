@@ -17,6 +17,6 @@ public class QueueReceiver {
     @JmsListener(destination = "myqueue")
     public void onMessage(String message) {
         logger.info("Received message from queue: {}", message);
-        topicPublisher.sendPing();
+        topicPublisher.sendPong();
     }
 }

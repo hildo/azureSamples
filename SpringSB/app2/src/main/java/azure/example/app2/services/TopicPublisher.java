@@ -16,7 +16,7 @@ public class TopicPublisher {
     @Autowired
     private JmsTemplate jmsTemplate;
 
-    public void sendPing() {
+    public void sendPong() {
         logger.info("Sending pong");
         jmsTemplate.send("mytopic", (Session session) -> session.createTextMessage("pong"));
     }
