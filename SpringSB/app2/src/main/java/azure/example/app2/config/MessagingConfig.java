@@ -25,6 +25,7 @@ public class MessagingConfig {
         jmsConnectionFactory.setUsername(details.getUsername());
         jmsConnectionFactory.setPassword(details.getPassword());
         jmsConnectionFactory.setClientID(clientId);
+        jmsConnectionFactory.setReceiveLocalOnly(true);
         return new CachingConnectionFactory(jmsConnectionFactory);
     }
     
@@ -39,7 +40,6 @@ public class MessagingConfig {
     public JmsListenerContainerFactory jmsListenerContainerFactory(ConnectionFactory connectionFactory) {
         DefaultJmsListenerContainerFactory returnValue = new DefaultJmsListenerContainerFactory();
         returnValue.setConnectionFactory(connectionFactory);
-        returnValue.setReceiveTimeout(-1L);
         return returnValue;
     }
 }
