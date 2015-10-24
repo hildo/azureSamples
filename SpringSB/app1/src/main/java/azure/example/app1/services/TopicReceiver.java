@@ -14,7 +14,9 @@ public class TopicReceiver {
     @Autowired
     private QueuePublisher queuePublisher;
     
-    @JmsListener(destination = "mytopic", subscription = "TopicReceiver")
+    @JmsListener(destination = "mytopic",
+            containerFactory = "topicJmsListenerContainerFactory",
+            subscription = "TopicReceiver")
     public void onMessage(String message) {
         logger.info("Received message from topic: {}", message);
         try {

@@ -17,6 +17,7 @@
     <modules>
         <module>app1</module>
         <module>app2</module>
+        <module>common</module>
     </modules>
     
     <properties>

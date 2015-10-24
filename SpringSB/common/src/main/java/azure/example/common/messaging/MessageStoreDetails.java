@@ -1,4 +1,4 @@
-package azure.example.app1.config;
+package azure.example.common.messaging;
 
 import java.io.UnsupportedEncodingException;
 
@@ -26,6 +26,6 @@ public class MessageStoreDetails {
     }
     
     public String getUrlString() throws UnsupportedEncodingException {
-        return String.format("amqps://@%3s?amqp.idleTimeout=3600000", host);
+        return String.format("amqps://%1s?amqp.idleTimeout=3600000", host);
     }
 }

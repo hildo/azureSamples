@@ -10,4 +10,12 @@
     
     <artifactId>app1</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>azure.example</groupId>
+            <artifactId>common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+    
 </project>

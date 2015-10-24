@@ -1,4 +1,4 @@
-package azure.example.app2.config;
+package azure.example.common.messaging;
 
 import java.io.UnsupportedEncodingException;
 
@@ -30,7 +30,7 @@ public class MessagingConfig {
     }
     
     @Bean
-    public JmsTemplate topicPublisher(ConnectionFactory jmsConnectionFactory) {
+    public JmsTemplate publisherTemplate(ConnectionFactory jmsConnectionFactory) {
         JmsTemplate returnValue = new JmsTemplate();
         returnValue.setConnectionFactory(jmsConnectionFactory);
         return returnValue;
@@ -42,4 +42,13 @@ public class MessagingConfig {
         returnValue.setConnectionFactory(connectionFactory);
         return returnValue;
     }
+    
+    @Bean
+    public JmsListenerContainerFactory topicJmsListenerContainerFactory(ConnectionFactory connectionFactory) {
+        DefaultJmsListenerContainerFactory returnValue = new DefaultJmsListenerContainerFactory();
+        returnValue.setConnectionFactory(connectionFactory);
+        returnValue.setSubscriptionDurable(Boolean.TRUE);
+        return returnValue;
+    }
+    
 }
