@@ -8,6 +8,8 @@ import org.apache.qpid.jms.JmsConnectionFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
+import org.springframework.jms.config.JmsListenerContainerFactory;
 import org.springframework.jms.connection.CachingConnectionFactory;
 import org.springframework.jms.core.JmsTemplate;
 
@@ -32,4 +34,14 @@ public class MessagingConfig {
         returnValue.setConnectionFactory(jmsConnectionFactory);
         return returnValue;
     }
+    
+    @Bean
+    public JmsListenerContainerFactory jmsListenerContainerFactory(ConnectionFactory connectionFactory) {
+        DefaultJmsListenerContainerFactory returnValue = new DefaultJmsListenerContainerFactory();
+        returnValue.setConnectionFactory(connectionFactory);
+        returnValue.setReceiveTimeout(-1L);
+        returnValue.setSubscriptionDurable(Boolean.TRUE);
+        return returnValue;
+    }
+    
 }

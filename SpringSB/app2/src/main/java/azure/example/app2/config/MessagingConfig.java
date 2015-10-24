@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
 import org.springframework.jms.config.JmsListenerContainerFactory;
 import org.springframework.jms.connection.CachingConnectionFactory;
+import org.springframework.jms.core.JmsTemplate;
 
 @Configuration
 public class MessagingConfig {
@@ -25,6 +26,13 @@ public class MessagingConfig {
         jmsConnectionFactory.setPassword(details.getPassword());
         jmsConnectionFactory.setClientID(clientId);
         return new CachingConnectionFactory(jmsConnectionFactory);
+    }
+    
+    @Bean
+    public JmsTemplate topicPublisher(ConnectionFactory jmsConnectionFactory) {
+        JmsTemplate returnValue = new JmsTemplate();
+        returnValue.setConnectionFactory(jmsConnectionFactory);
+        return returnValue;
     }
     
     @Bean
