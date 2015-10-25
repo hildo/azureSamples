@@ -30,7 +30,7 @@ public class MessagingConfig {
     }
     
     @Bean
-    public JmsTemplate publisherTemplate(ConnectionFactory jmsConnectionFactory) {
+    public JmsTemplate jmsTemplate(ConnectionFactory jmsConnectionFactory) {
         JmsTemplate returnValue = new JmsTemplate();
         returnValue.setConnectionFactory(jmsConnectionFactory);
         return returnValue;
