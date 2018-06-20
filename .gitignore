@@ -1,3 +1,5 @@
 SpringSB/app1/target
 SpringSB/app2/target
 /SpringSB/common/target/
+SpringSB/.idea
+**/*.iml
