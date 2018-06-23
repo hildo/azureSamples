@@ -24,7 +24,8 @@ public class QueuePublisher {
 
     @PostConstruct
     public void afterConstruct() {
-        sendPing();
+//        sendPing();
+
     }
  
     public void sendPing() {
